@@ -1,0 +1,21 @@
+what's the purpose of /usr/include, within that directory there are both asm and asm-generic (or just asm-generic)
+there are many definitions of unistd.h: unistd.h      unistd_32.h   unistd_64.h   unistd_x32.h 
+is this /usr/include same as in linux kernel sources (like on bootlin)
+
+strace ls  - analyze work of the dynamic linker (previous labs)
+
+what mmap is doing?
+
+In modern x86-64 architectures, the transition from user space to kernel space during a system call is highly optimized using Model-Specific Registers (MSRs). 
+When a process executes the syscall instruction, the CPU performs a rapid context switch by reading specific MSRs previously initialized by the kernel at boot time. 
+The most critical of these is the MSR_LSTAR (Long System Target Address Register), which holds the exact memory address of the kernel's system call entry routine (typically entry_SYSCALL_64).
+?? Does this
+
+when you call syscall directly (not wrapper), does it return to you this negative value if error? or you need to access it through some register? can you acces it in c? like = syscall(...)
+
+
+PGD - od teg miejsca zaczyna sie page directories
+
+COW - copy on write, jezeli vmarea mowi ze mozna pisac, a entry (pte) mowi ze nie mozna
+
+task struct dowiazania do threadinfo

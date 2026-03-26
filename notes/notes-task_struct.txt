@@ -1,0 +1,46 @@
+Kazdy proces ma dwa stosy, jeden userspacowy, jeden w kernelu
+
+
+CONFIG_THREAD_INFO_IN_TASK
+ 
+ 
+union thread_union {
+	struct task_struct task;
+#ifndef CONFIG_THREAD_INFO_IN_TASK
+	struct thread_info thread_info;
+#endif
+	unsigned long stack[THREAD_SIZE/sizeof(long)];
+};
+
+
+
+
+/*
+	* This begins the randomizable portion of task_struct. Only
+	* scheduling-critical items should be added above here.
+	*/
+randomized_struct_fields_start
+
+	
+	
+mm_struct - wszystko co sie wiaze z pamiecia danego procesu
+
+pgd - wazne, przy przelaczaniu 
+
+TASK_SIZE wazne
+
+
+mm_count - ile osob wspodzieli mm_struct
+pgd to jest uchwyt katalogu stron
+
+kazdy node maple tree jest tak zaprojektowany zeby trafic w calosci do linii cachea !!??!!!???!!???!??
+
+RCU
+
+OGARNAC CO TO SA vm__area_struct ?!!!!!!!?????
+
+
+make LLVM=1 CC=clang compile commands.json -j15
+
+clangd !!!!
+
